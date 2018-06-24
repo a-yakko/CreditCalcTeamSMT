@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class frame extends JFrame {
 
@@ -20,6 +22,9 @@ public class frame extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	int hissyu;
+	int sentaku;
+	int jiyu;
 
 	/**
 	 * Launch the application.
@@ -41,6 +46,10 @@ public class frame extends JFrame {
 	 * Create the frame.
 	 */
 	public frame() {
+		
+		
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 654, 654);
 		contentPane = new JPanel();
@@ -76,17 +85,17 @@ public class frame extends JFrame {
 		lblNewLabel_3.setBounds(447, 513, 61, 16);
 		contentPane.add(lblNewLabel_3);
 		
-		textField = new JTextField();
+		textField = new JTextField(String.valueOf(hissyu));
 		textField.setBounds(283, 475, 130, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
+		textField_1 = new JTextField(String.valueOf(sentaku));
 		textField_1.setBounds(283, 553, 130, 26);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		textField_2 = new JTextField();
+		textField_2 = new JTextField(String.valueOf(jiyu));
 		textField_2.setBounds(471, 475, 130, 26);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
@@ -95,6 +104,8 @@ public class frame extends JFrame {
 		textField_3.setBounds(471, 553, 130, 26);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
+		
+		
 		
 		JCheckBox checkBox = new JCheckBox("2年セミナー");
 		checkBox.setBounds(28, 207, 128, 23);
@@ -151,7 +162,84 @@ public class frame extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setBounds(360, -1, 433, 437);
 		contentPane.add(lblNewLabel_4);
-		lblNewLabel_4.setIcon(new ImageIcon("/Users/MorishitaSatoko/git/CreditCalcTeamSMT/CreditCalcTeamSMT/src/school_tani_otosu_boy.png"));
+		lblNewLabel_4.setIcon(new ImageIcon("../CreditCalcTeamSMT/src/school_tani_otosu_boy.png"));
 		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{panel}));
+		
+		///柴田が追加した計算箇所
+		hissyu = 0;
+		sentaku = 0;
+		jiyu = 0;
+		JButton btns = new JButton("計算する！");
+		btns.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jiyu = Integer.parseInt(textField_2.getText());
+				if(checkBox.isSelected()) {
+					hissyu = hissyu + 2;
+				}
+				if(checkBox_1.isSelected()) {
+					hissyu = hissyu + 2;	
+				}
+				if(checkBox_2.isSelected()) {
+					hissyu = hissyu + 3;
+				}
+				if(checkBox_3.isSelected()) {
+					hissyu = hissyu + 3;
+				}
+				if(checkBox_4.isSelected()) {
+					hissyu = hissyu + 3;
+				}
+				if(checkBox_5.isSelected()) {
+					hissyu = hissyu + 3;
+				}
+				if(checkBox_6.isSelected()) {
+					hissyu = hissyu + 3;
+				}
+				if(checkBox_7.isSelected()) {
+					hissyu = hissyu + 3;
+				}
+				if(chckbxCsReadingSkills.isSelected()) {
+					hissyu = hissyu + 4;
+				}
+				if(chckbxCsOralEnglish.isSelected()) {
+					hissyu = hissyu + 4;
+				}
+				
+				if(checkBox_8.isSelected()) {
+					sentaku = sentaku + 3;
+				}
+				if(checkBox_9.isSelected()) {
+					sentaku = sentaku + 3;
+				}
+				if(checkBox_10.isSelected()) {
+					sentaku = sentaku + 3;
+				}
+				
+				
+		
+						textField.setText(String.valueOf(hissyu));
+						textField_1.setText(String.valueOf(sentaku));
+						textField_2.setText(String.valueOf(jiyu));
+						textField_3.setText(String.valueOf(hissyu+sentaku+jiyu));
+					}
+				});
+				btns.setBounds(244, 367, 117, 29);
+				contentPane.add(btns);
+				
+				JButton button = new JButton("リセット");
+				button.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						hissyu=0;
+						sentaku=0;
+						jiyu=0;
+						textField.setText(String.valueOf(hissyu));
+						textField_1.setText(String.valueOf(sentaku));
+						textField_2.setText(String.valueOf(jiyu));
+						textField_3.setText(String.valueOf(hissyu+sentaku+jiyu));
+					}
+				});
+				button.setBounds(244, 408, 117, 29);
+				contentPane.add(button);
+				
+		
 	}
 }
