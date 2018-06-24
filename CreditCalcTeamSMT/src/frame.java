@@ -105,6 +105,8 @@ public class frame extends JFrame {
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
+		
+		
 		JCheckBox checkBox = new JCheckBox("2年セミナー");
 		checkBox.setBounds(28, 207, 128, 23);
 		contentPane.add(checkBox);
@@ -164,8 +166,13 @@ public class frame extends JFrame {
 		contentPane.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{panel}));
 		
 		///柴田が追加した計算箇所
-		
-		
+		hissyu = 0;
+		sentaku = 0;
+		jiyu = 0;
+		JButton btns = new JButton("計算する！");
+		btns.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jiyu = Integer.parseInt(textField_2.getText());
 				if(checkBox.isSelected()) {
 					hissyu = hissyu + 2;
 				}
@@ -191,10 +198,10 @@ public class frame extends JFrame {
 					hissyu = hissyu + 3;
 				}
 				if(chckbxCsReadingSkills.isSelected()) {
-					hissyu = hissyu + 3;
+					hissyu = hissyu + 4;
 				}
 				if(chckbxCsOralEnglish.isSelected()) {
-					hissyu = hissyu + 3;
+					hissyu = hissyu + 4;
 				}
 				
 				if(checkBox_8.isSelected()) {
@@ -208,17 +215,31 @@ public class frame extends JFrame {
 				}
 				
 				
-				JButton btns = new JButton("計算する！");
-				btns.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
+		
 						textField.setText(String.valueOf(hissyu));
 						textField_1.setText(String.valueOf(sentaku));
-						textField_2.setText("反応してる？");
+						textField_2.setText(String.valueOf(jiyu));
 						textField_3.setText(String.valueOf(hissyu+sentaku+jiyu));
 					}
 				});
-				btns.setBounds(233, 385, 117, 29);
+				btns.setBounds(244, 367, 117, 29);
 				contentPane.add(btns);
+				
+				JButton button = new JButton("リセット");
+				button.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						hissyu=0;
+						sentaku=0;
+						jiyu=0;
+						textField.setText(String.valueOf(hissyu));
+						textField_1.setText(String.valueOf(sentaku));
+						textField_2.setText(String.valueOf(jiyu));
+						textField_3.setText(String.valueOf(hissyu+sentaku+jiyu));
+					}
+				});
+				button.setBounds(244, 408, 117, 29);
+				contentPane.add(button);
+				
 		
 	}
 }
