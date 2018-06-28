@@ -172,11 +172,13 @@ public class frame extends JFrame {
 		JButton btns = new JButton("計算する！");
 		btns.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jiyu = Integer.parseInt(textField_2.getText());
+				
+
 				//村：一旦0にする
+				jiyu = 0;
 				hissyu = 0;
 				sentaku = 0;
-				jiyu = 0;
+				jiyu = Integer.parseInt(textField_2.getText());
 				if(checkBox.isSelected()) {
 					hissyu = hissyu + 2;
 				}
