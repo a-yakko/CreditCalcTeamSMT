@@ -173,6 +173,10 @@ public class frame extends JFrame {
 		btns.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				jiyu = Integer.parseInt(textField_2.getText());
+				//村：一旦0にする
+				hissyu = 0;
+				sentaku = 0;
+				jiyu = 0;
 				if(checkBox.isSelected()) {
 					hissyu = hissyu + 2;
 				}
