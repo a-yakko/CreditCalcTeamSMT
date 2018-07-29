@@ -29,7 +29,7 @@ public class frame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -172,6 +172,12 @@ public class frame extends JFrame {
 		JButton btns = new JButton("計算する！");
 		btns.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+
+				//村：一旦0にする
+				jiyu = 0;
+				hissyu = 0;
+				sentaku = 0;
 				jiyu = Integer.parseInt(textField_2.getText());
 				if(checkBox.isSelected()) {
 					hissyu = hissyu + 2;
@@ -228,6 +234,7 @@ public class frame extends JFrame {
 				JButton button = new JButton("リセット");
 				button.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						//計算結果を空欄にする
 						hissyu=0;
 						sentaku=0;
 						jiyu=0;
@@ -235,6 +242,20 @@ public class frame extends JFrame {
 						textField_1.setText(String.valueOf(sentaku));
 						textField_2.setText(String.valueOf(jiyu));
 						textField_3.setText(String.valueOf(hissyu+sentaku+jiyu));
+						//checkboxの選択を外す
+						checkBox.setSelected(false);
+						checkBox_1.setSelected(false);
+						checkBox_2.setSelected(false);
+						checkBox_3.setSelected(false);
+						checkBox_4.setSelected(false);
+						checkBox_5.setSelected(false);
+						checkBox_6.setSelected(false);
+						checkBox_7.setSelected(false);
+						checkBox_8.setSelected(false);
+						checkBox_9.setSelected(false);
+						checkBox_10.setSelected(false);
+						chckbxCsReadingSkills.setSelected(false);
+						chckbxCsOralEnglish.setSelected(false);
 					}
 				});
 				button.setBounds(244, 408, 117, 29);
